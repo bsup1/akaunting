@@ -50,6 +50,16 @@ class AdminMenu
                 ]);
             }
 
+            // Contracts
+            if ($user->can('read-contractors-contractors')) {
+                $menu->add([
+                    'url' => 'contractors/contractors',
+                    'title' => trans_choice('general.contractors', 2),
+                    'icon' => 'fa fa-users',
+                    'order' => 3,
+                ]);
+            }
+
             // Incomes
             if ($user->can(['read-incomes-invoices', 'read-incomes-revenues', 'read-incomes-customers'])) {
                 $menu->dropdown(trans_choice('general.incomes', 2), function ($sub) use($user, $attr) {
@@ -64,7 +74,7 @@ class AdminMenu
                     if ($user->can('read-incomes-customers')) {
                         $sub->url('incomes/customers', trans_choice('general.customers', 2), 3, $attr);
                     }
-                }, 3, [
+                }, 4, [
                     'title' => trans_choice('general.incomes', 2),
                     'icon' => 'fa fa-money',
                 ]);
@@ -84,7 +94,7 @@ class AdminMenu
                     if ($user->can('read-expenses-vendors')) {
                         $sub->url('expenses/vendors', trans_choice('general.vendors', 2), 3, $attr);
                     }
-                }, 4, [
+                }, 5, [
                     'title' => trans_choice('general.expenses', 2),
                     'icon' => 'fa fa-shopping-cart',
                 ]);
@@ -104,7 +114,7 @@ class AdminMenu
                     if ($user->can('read-banking-transactions')) {
                         $sub->url('banking/transactions', trans_choice('general.transactions', 2), 3, $attr);
                     }
-                }, 5, [
+                }, 6, [
                     'title' => trans('general.banking'),
                     'icon' => 'fa fa-university',
                 ]);
@@ -124,7 +134,7 @@ class AdminMenu
                     if ($user->can('read-reports-income-expense-summary')) {
                         $sub->url('reports/income-expense-summary', trans('reports.summary.income_expense'), 3, $attr);
                     }
-                }, 6, [
+                }, 7, [
                     'title' => trans_choice('general.reports', 2),
                     'icon' => 'fa fa-bar-chart',
                 ]);
@@ -164,7 +174,7 @@ class AdminMenu
 
                         $position++;
                     }
-                }, 7, [
+                }, 8, [
                     'title' => trans_choice('general.settings', 2),
                     'icon' => 'fa fa-gears',
                 ]);
@@ -176,7 +186,7 @@ class AdminMenu
                     'url' => 'apps/home',
                     'title' => trans_choice('general.modules', 2),
                     'icon' => 'fa fa-rocket',
-                    'order' => 8,
+                    'order' => 9,
                 ]);
             }
 
