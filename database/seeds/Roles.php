@@ -38,6 +38,7 @@ class Roles extends Seeder
                 'common-import' => 'c',
                 'common-uploads' => 'd',
                 'items-items' => 'c,r,u,d',
+                'contractors-contractors' => 'c,r,u,d',
                 'incomes-invoices' => 'c,r,u,d',
                 'incomes-revenues' => 'c,r,u,d',
                 'incomes-customers' => 'c,r,u,d',
@@ -68,6 +69,7 @@ class Roles extends Seeder
                 'companies-companies' => 'c,r,u,d',
                 'common-import' => 'c',
                 'items-items' => 'c,r,u,d',
+                'contractors-contractors' => 'c,r,u,d',
                 'incomes-invoices' => 'c,r,u,d',
                 'incomes-revenues' => 'c,r,u,d',
                 'incomes-customers' => 'c,r,u,d',
@@ -94,6 +96,13 @@ class Roles extends Seeder
                 'customers-payments' => 'r,u',
                 'customers-transactions' => 'r',
                 'customers-profile' => 'r,u',
+            ],
+            'contractor' => [
+                'contractor-panel' => 'r',
+                'contractors-invoices' => 'r,u',
+                'contractors-payments' => 'r,u',
+                'contractors-transactions' => 'r',
+                'contractors-profile' => 'r,u',
             ],
         ];
 
