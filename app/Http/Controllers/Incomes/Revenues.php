@@ -31,7 +31,7 @@ class Revenues extends Controller
         $customers = collect(Customer::enabled()->pluck('name', 'id'))
             ->prepend(trans('general.all_type', ['type' => trans_choice('general.customers', 2)]), '');
 
-        $categories = collect(Category::enabled()->type('income')->pluck('name', 'id'))
+        $categories = collect(Category::enabled()->pluck('name', 'id'))
             ->prepend(trans('general.all_type', ['type' => trans_choice('general.categories', 2)]), '');
 
         $accounts = collect(Account::enabled()->pluck('name', 'id'))
@@ -57,7 +57,7 @@ class Revenues extends Controller
 
         $customers = Customer::enabled()->pluck('name', 'id');
 
-        $categories = Category::enabled()->type('income')->pluck('name', 'id');
+        $categories = Category::enabled()->pluck('name', 'id');
 
         $payment_methods = Modules::getPaymentMethods();
 
@@ -155,7 +155,7 @@ class Revenues extends Controller
 
         $customers = Customer::enabled()->pluck('name', 'id');
 
-        $categories = Category::enabled()->type('income')->pluck('name', 'id');
+        $categories = Category::enabled()->pluck('name', 'id');
 
         $payment_methods = Modules::getPaymentMethods();
 
