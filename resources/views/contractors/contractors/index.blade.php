@@ -78,7 +78,7 @@
     </div>
     <!-- /.box-body -->
     <div class="box-footer">
-        @include('partials.admin.pagination', ['items' => $customers, 'type' => 'customers'])
+        @include('partials.admin.pagination', ['items' => $contractors, 'type' => 'contractors'])
     </div>
     <!-- /.box-footer -->
 </div>
