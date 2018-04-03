@@ -45,6 +45,15 @@ Route::group(['middleware' => 'language'], function () {
                 Route::resource('companies', 'Companies\Companies');
             });
 
+            Route::group(['prefix' => 'contractors'], function () {
+                Route::get('contractors/currency', 'Contractors\Contractors@currency');
+                Route::get('contractors/{contractor}/duplicate', 'Contractors\Contractors@duplicate');
+                Route::post('contractors/contractor', 'Contractors\Contractors@contractor');
+                Route::post('contractors/field', 'Contractors\Contractors@field');
+                Route::post('contractors/import', 'Contractors\Contractors@import');
+                Route::resource('contractors', 'Contractors\Contractors');
+            });
+
             Route::group(['prefix' => 'incomes'], function () {
                 Route::get('invoices/{invoice}/sent', 'Incomes\Invoices@markSent');
                 Route::get('invoices/{invoice}/email', 'Incomes\Invoices@emailInvoice');
