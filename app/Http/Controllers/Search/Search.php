@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Search;
 
 use App\Http\Controllers\Controller;
+use App\Models\Contractor\Contractor;
 use App\Models\Banking\Account;
 use App\Models\Expense\Bill;
 use App\Models\Expense\Payment;
@@ -81,16 +82,16 @@ class Search extends Controller
 
         //$revenues = Revenue::search($keyword)->get();
 
-        $customers = Customer::enabled()->search($keyword)->get();
+        $contractors = Contractor::enabled()->search($keyword)->get();
 
-        if ($customers->count()) {
-            foreach ($customers as $customer) {
+        if ($contractors->count()) {
+            foreach ($contractors as $contractor) {
                 $results[] = (object)[
-                    'id'    => $customer->id,
-                    'name'  => $customer->name,
-                    'type'  => trans_choice('general.customers', 1),
+                    'id'    => $contractor->id,
+                    'name'  => $contractor->name,
+                    'type'  => trans_choice('general.contractors', 1),
                     'color' => '#03d876',
-                    'href'  => url('incomes/customers/' . $customer->id . '/edit'),
+                    'href'  => url('contractors/contractors/' . $contractor->id . '/edit'),
                 ];
             }
         }
@@ -110,20 +111,6 @@ class Search extends Controller
         }
 
         //$payments = Payment::search($keyword)->get();
-
-        $vendors = Vendor::enabled()->search($keyword)->get();
-
-        if ($vendors->count()) {
-            foreach ($vendors as $vendor) {
-                $results[] = (object)[
-                    'id'    => $vendor->id,
-                    'name'  => $vendor->name,
-                    'type'  => trans_choice('general.vendors', 1),
-                    'color' => '#ff8373',
-                    'href'  => url('expenses/vendors/' . $vendor->id . '/edit'),
-                ];
-            }
-        }
 
         return response()->json((object) $results);
     }
