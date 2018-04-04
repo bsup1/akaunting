@@ -41,10 +41,10 @@ class Roles extends Seeder
                 'contractors-contractors' => 'c,r,u,d',
                 'incomes-invoices' => 'c,r,u,d',
                 'incomes-revenues' => 'c,r,u,d',
-                'incomes-customers' => 'c,r,u,d',
+                //'incomes-customers' => 'c,r,u,d',
                 'expenses-bills' => 'c,r,u,d',
                 'expenses-payments' => 'c,r,u,d',
-                'expenses-vendors' => 'c,r,u,d',
+                //'expenses-vendors' => 'c,r,u,d',
                 'banking-accounts' => 'c,r,u,d',
                 'banking-transfers' => 'c,r,u,d',
                 'banking-transactions' => 'r',
@@ -72,10 +72,10 @@ class Roles extends Seeder
                 'contractors-contractors' => 'c,r,u,d',
                 'incomes-invoices' => 'c,r,u,d',
                 'incomes-revenues' => 'c,r,u,d',
-                'incomes-customers' => 'c,r,u,d',
+                //'incomes-customers' => 'c,r,u,d',
                 'expenses-bills' => 'c,r,u,d',
                 'expenses-payments' => 'c,r,u,d',
-                'expenses-vendors' => 'c,r,u,d',
+                //'expenses-vendors' => 'c,r,u,d',
                 'banking-accounts' => 'c,r,u,d',
                 'banking-transfers' => 'c,r,u,d',
                 'banking-transactions' => 'r',
@@ -90,6 +90,7 @@ class Roles extends Seeder
                 'reports-expense-summary' => 'r',
                 'reports-income-expense-summary' => 'r',
             ],
+            /*
             'customer' => [
                 'customer-panel' => 'r',
                 'customers-invoices' => 'r,u',
@@ -97,6 +98,7 @@ class Roles extends Seeder
                 'customers-transactions' => 'r',
                 'customers-profile' => 'r,u',
             ],
+            */
             'contractor' => [
                 'contractor-panel' => 'r',
                 'contractors-invoices' => 'r,u',
