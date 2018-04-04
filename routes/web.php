@@ -68,12 +68,12 @@ Route::group(['middleware' => 'language'], function () {
                 Route::get('revenues/{revenue}/duplicate', 'Incomes\Revenues@duplicate');
                 Route::post('revenues/import', 'Incomes\Revenues@import');
                 Route::resource('revenues', 'Incomes\Revenues');
-                Route::get('customers/currency', 'Incomes\Customers@currency');
-                Route::get('customers/{customer}/duplicate', 'Incomes\Customers@duplicate');
-                Route::post('customers/customer', 'Incomes\Customers@customer');
-                Route::post('customers/field', 'Incomes\Customers@field');
-                Route::post('customers/import', 'Incomes\Customers@import');
-                Route::resource('customers', 'Incomes\Customers');
+                //Route::get('customers/currency', 'Incomes\Customers@currency');
+                //Route::get('customers/{customer}/duplicate', 'Incomes\Customers@duplicate');
+                //Route::post('customers/customer', 'Incomes\Customers@customer');
+                //Route::post('customers/field', 'Incomes\Customers@field');
+                //Route::post('customers/import', 'Incomes\Customers@import');
+                //Route::resource('customers', 'Incomes\Customers');
             });
 
             Route::group(['prefix' => 'expenses'], function () {
@@ -88,11 +88,11 @@ Route::group(['middleware' => 'language'], function () {
                 Route::get('payments/{payment}/duplicate', 'Expenses\Payments@duplicate');
                 Route::post('payments/import', 'Expenses\Payments@import');
                 Route::resource('payments', 'Expenses\Payments');
-                Route::get('vendors/currency', 'Expenses\Vendors@currency');
-                Route::get('vendors/{vendor}/duplicate', 'Expenses\Vendors@duplicate');
-                Route::post('vendors/vendor', 'Expenses\Vendors@vendor');
-                Route::post('vendors/import', 'Expenses\Vendors@import');
-                Route::resource('vendors', 'Expenses\Vendors');
+                ///Route::get('vendors/currency', 'Expenses\Vendors@currency');
+                //Route::get('vendors/{vendor}/duplicate', 'Expenses\Vendors@duplicate');
+                //Route::post('vendors/vendor', 'Expenses\Vendors@vendor');
+                //Route::post('vendors/import', 'Expenses\Vendors@import');
+                //Route::resource('vendors', 'Expenses\Vendors');
             });
 
             Route::group(['prefix' => 'banking'], function () {
@@ -144,7 +144,7 @@ Route::group(['middleware' => 'language'], function () {
                 Route::resource('updates', 'Install\Updates');
             });
         });
-
+        /*
         Route::group(['middleware' => ['customermenu', 'permission:read-customer-panel']], function () {
             Route::group(['prefix' => 'customers'], function () {
                 Route::get('/', 'Customers\Dashboard@index');
@@ -160,6 +160,25 @@ Route::group(['middleware' => 'language'], function () {
                 Route::resource('profile', 'Customers\Profile');
 
                 Route::get('logout', 'Auth\Login@destroy')->name('customer_logout');
+            });
+        });
+        */
+        
+        Route::group(['middleware' => ['contractormmenu', 'permission:read-contractor-panel']], function () {
+            Route::group(['prefix' => 'contractors'], function () {
+                Route::get('/', 'Contractors\Dashboard@index');
+
+                Route::get('invoices/{invoice}/print', 'Contractors\Invoices@printInvoice');
+                Route::get('invoices/{invoice}/pdf', 'Contractors\Invoices@pdfInvoice');
+                Route::post('invoices/{invoice}/payment', 'Contractors\Invoices@payment');
+                Route::post('invoices/{invoice}/confirm', 'Contractors\Invoices@confirm');
+                Route::resource('invoices', 'Contractors\Invoices');
+                Route::resource('payments', 'Contractors\Payments');
+                Route::resource('transactions', 'Contractors\Transactions');
+                Route::get('profile/read-invoices', 'Contractors\Profile@readOverdueInvoices');
+                Route::resource('profile', 'Contractors\Profile');
+
+                Route::get('logout', 'Auth\Login@destroy')->name('contractor_logout');
             });
         });
     });
