@@ -68,19 +68,8 @@ class Login extends Controller
             return redirect('auth/login');
         }
 
-        // Check if is customer
-        if ($user->customer) {
-            $path = session('url.intended', 'customers');
-
-            // Path must start with 'customers' prefix
-            if (!str_contains($path, 'customers')) {
-                $path = 'customers';
-            }
-
-            return redirect($path);
-        }
         // Check if is contractor
-        else if ($user->contractor) {
+        if ($user->contractor) {
             $path = session('url.intended', 'contractors');
 
             // Path must start with 'contractors' prefix
