@@ -70,10 +70,11 @@ class AdminMenu
                     if ($user->can('read-incomes-revenues')) {
                         $sub->url('incomes/revenues', trans_choice('general.revenues', 2), 2, $attr);
                     }
-
+                    /*
                     if ($user->can('read-incomes-customers')) {
                         $sub->url('incomes/customers', trans_choice('general.customers', 2), 3, $attr);
                     }
+                    */
                 }, 4, [
                     'title' => trans_choice('general.incomes', 2),
                     'icon' => 'fa fa-money',
@@ -90,10 +91,11 @@ class AdminMenu
                     if ($user->can('read-expenses-payments')) {
                         $sub->url('expenses/payments', trans_choice('general.payments', 2), 2, $attr);
                     }
-
+                    /*
                     if ($user->can('read-expenses-vendors')) {
                         $sub->url('expenses/vendors', trans_choice('general.vendors', 2), 3, $attr);
                     }
+                    */
                 }, 5, [
                     'title' => trans_choice('general.expenses', 2),
                     'icon' => 'fa fa-shopping-cart',
