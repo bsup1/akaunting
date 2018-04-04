@@ -79,6 +79,17 @@ class Login extends Controller
 
             return redirect($path);
         }
+        // Check if is contractor
+        else if ($user->contractor) {
+            $path = session('url.intended', 'contractors');
+
+            // Path must start with 'contractors' prefix
+            if (!str_contains($path, 'contractors')) {
+                $path = 'contractors';
+            }
+
+            return redirect($path);
+        }
 
         return redirect('/');
     }
