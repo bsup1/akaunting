@@ -21,12 +21,12 @@ class ViewComposerServiceProvider extends ServiceProvider
 
         // Add company info to menu
         View::composer(
-            ['partials.admin.menu', 'partials.customer.menu'], 'App\Http\ViewComposers\Menu'
+            ['partials.admin.menu', 'partials.customer.menu', 'partials.contractor.menu'], 'App\Http\ViewComposers\Menu'
         );
 
         // Add notifications to header
         View::composer(
-            ['partials.admin.header', 'partials.customer.header'], 'App\Http\ViewComposers\Header'
+            ['partials.admin.header', 'partials.customer.header', 'partials.contractor.header'], 'App\Http\ViewComposers\Header'
         );
 
         // Add limits to index
