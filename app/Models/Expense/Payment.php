@@ -61,7 +61,7 @@ class Payment extends Model
 
     public function vendor()
     {
-        return $this->belongsTo('App\Models\Expense\Vendor');
+        return $this->belongsTo('App\Models\Contractor\Contractor', 'vendor_id');
     }
 
     public function transfers()
