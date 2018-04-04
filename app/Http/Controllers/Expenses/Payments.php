@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Expenses;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Expense\Payment as Request;
 use App\Models\Banking\Account;
+use App\Models\Contractor\Contractor;
 use App\Models\Expense\Payment;
-use App\Models\Expense\Vendor;
 use App\Models\Setting\Category;
 use App\Models\Setting\Currency;
 use App\Traits\Uploads;
@@ -26,7 +26,7 @@ class Payments extends Controller
     {
         $payments = Payment::with(['vendor', 'account', 'category'])->isNotTransfer()->collect(['paid_at'=> 'desc']);
 
-        $vendors = collect(Vendor::enabled()->pluck('name', 'id'))
+        $vendors = collect(Contractor::enabled()->pluck('name', 'id'))
             ->prepend(trans('general.all_type', ['type' => trans_choice('general.vendors', 2)]), '');
 
         $categories = collect(Category::enabled()->type('expense')->pluck('name', 'id'))
@@ -53,7 +53,7 @@ class Payments extends Controller
 
         $account_currency_code = Account::where('id', setting('general.default_account'))->pluck('currency_code')->first();
 
-        $vendors = Vendor::enabled()->pluck('name', 'id');
+        $vendors = Contractor::enabled()->pluck('name', 'id');
 
         $categories = Category::enabled()->type('expense')->pluck('name', 'id');
 
@@ -151,7 +151,7 @@ class Payments extends Controller
 
         $account_currency_code = Account::where('id', $payment->account_id)->pluck('currency_code')->first();
 
-        $vendors = Vendor::enabled()->pluck('name', 'id');
+        $vendors = Contractor::enabled()->pluck('name', 'id');
 
         $categories = Category::enabled()->type('expense')->pluck('name', 'id');
 

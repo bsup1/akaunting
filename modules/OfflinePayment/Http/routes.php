@@ -10,3 +10,7 @@ Route::group(['middleware' => ['web', 'auth', 'language', 'adminmenu', 'permissi
 Route::group(['middleware' => ['web', 'auth', 'language', 'customermenu', 'permission:read-customer-panel'], 'prefix' => 'customers', 'namespace' => 'Modules\OfflinePayment\Http\Controllers'], function () {
     Route::get('invoices/{invoice}/offlinepayment', 'OfflinePayment@show');
 });
+
+Route::group(['middleware' => ['web', 'auth', 'language', 'contractormenu', 'permission:read-contractor-panel'], 'prefix' => 'contractors', 'namespace' => 'Modules\OfflinePayment\Http\Controllers'], function () {
+    Route::get('invoices/{invoice}/offlinepayment', 'OfflinePayment@show');
+});

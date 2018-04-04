@@ -7,6 +7,7 @@ return [
     'invoices'              => 'Invoice|Invoices',
     'revenues'              => 'Revenue|Revenues',
     'customers'             => 'Customer|Customers',
+    'contractors'           => 'Contractor|Contractors',
     'expenses'              => 'Expense|Expenses',
     'bills'                 => 'Bill|Bills',
     'payments'              => 'Payment|Payments',

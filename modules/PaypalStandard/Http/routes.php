@@ -4,6 +4,10 @@ Route::group(['middleware' => ['web', 'auth', 'language', 'customermenu', 'permi
     Route::get('invoices/{invoice}/paypalstandard', 'PaypalStandard@show');
 });
 
+Route::group(['middleware' => ['web', 'auth', 'language', 'contractormenu', 'permission:read-contractor-panel'], 'prefix' => 'contractors', 'namespace' => 'Modules\PaypalStandard\Http\Controllers'], function () {
+    Route::get('invoices/{invoice}/paypalstandard', 'PaypalStandard@show');
+});
+
 Route::group(['prefix' => 'customers', 'namespace' => 'Modules\PaypalStandard\Http\Controllers'], function () {
     Route::post('invoices/{invoice}/paypalstandard/result', 'PaypalStandard@result');
     Route::post('invoices/{invoice}/paypalstandard/callback', 'PaypalStandard@callback');
