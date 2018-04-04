@@ -50,7 +50,7 @@ class AdminMenu
                 ]);
             }
 
-            // Contracts
+            // Contractors
             if ($user->can('read-contractors-contractors')) {
                 $menu->add([
                     'url' => 'contractors/contractors',
