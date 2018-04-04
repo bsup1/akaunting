@@ -13,7 +13,7 @@ use Monolog\Handler\StreamHandler;
 use GuzzleHttp\Client;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\Customer\InvoicePayment as PaymentRequest;
+use App\Http\Requests\Contractor\InvoicePayment as PaymentRequest;
 
 use App\Models\Income\Invoice;
 
@@ -84,7 +84,7 @@ class PaypalStandard extends Controller
             flash($message)->warning();
         }
 
-        $redirect = url('customers/invoices/' . $invoice->id);
+        $redirect = url('contractors/invoices/' . $invoice->id);
 
         return redirect($redirect);
     }
