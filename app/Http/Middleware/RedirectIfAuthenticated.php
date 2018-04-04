@@ -18,8 +18,8 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            if (Auth::user()->customer) {
-                return redirect('/customers');
+            if (Auth::user()->contractor) {
+                return redirect('/contractors');
             }
 
             return redirect('/');
