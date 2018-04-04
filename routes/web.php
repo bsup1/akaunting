@@ -88,7 +88,7 @@ Route::group(['middleware' => 'language'], function () {
                 Route::get('payments/{payment}/duplicate', 'Expenses\Payments@duplicate');
                 Route::post('payments/import', 'Expenses\Payments@import');
                 Route::resource('payments', 'Expenses\Payments');
-                ///Route::get('vendors/currency', 'Expenses\Vendors@currency');
+                //Route::get('vendors/currency', 'Expenses\Vendors@currency');
                 //Route::get('vendors/{vendor}/duplicate', 'Expenses\Vendors@duplicate');
                 //Route::post('vendors/vendor', 'Expenses\Vendors@vendor');
                 //Route::post('vendors/import', 'Expenses\Vendors@import');
@@ -163,8 +163,8 @@ Route::group(['middleware' => 'language'], function () {
             });
         });
         */
-        
-        Route::group(['middleware' => ['contractormmenu', 'permission:read-contractor-panel']], function () {
+
+        Route::group(['middleware' => ['contractormenu', 'permission:read-contractor-panel']], function () {
             Route::group(['prefix' => 'contractors'], function () {
                 Route::get('/', 'Contractors\Dashboard@index');
 
