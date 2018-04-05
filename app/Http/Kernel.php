@@ -68,6 +68,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'adminmenu' => \App\Http\Middleware\AdminMenu::class,
         'customermenu' => \App\Http\Middleware\CustomerMenu::class,
+        'contractormenu' => \App\Http\Middleware\ContractorMenu::class,
         'role' => \Laratrust\Middleware\LaratrustRole::class,
         'permission' => \Laratrust\Middleware\LaratrustPermission::class,
         'ability' => \Laratrust\Middleware\LaratrustAbility::class,

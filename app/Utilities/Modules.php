@@ -16,7 +16,7 @@ class Modules
 
         $payment_methods = Cache::get('payment_methods.admin');
 
-        $customer = auth()->user()->customer;
+        $customer = auth()->user()->contractor;
 
         if ($customer && $type != 'all') {
             $payment_methods = Cache::get('payment_methods.customer');

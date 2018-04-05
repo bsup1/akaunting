@@ -63,7 +63,7 @@ class Invoice extends Model
 
     public function customer()
     {
-        return $this->belongsTo('App\Models\Income\Customer');
+        return $this->belongsTo('App\Models\Contractor\Contractor', 'customer_id');
     }
 
     public function currency()

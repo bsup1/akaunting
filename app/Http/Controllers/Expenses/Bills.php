@@ -9,8 +9,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Expense\Bill as Request;
 use App\Http\Requests\Expense\BillPayment as PaymentRequest;
 use App\Models\Banking\Account;
+use App\Models\Contractor\Contractor;
 use App\Models\Expense\BillStatus;
-use App\Models\Expense\Vendor;
 use App\Models\Expense\Bill;
 use App\Models\Expense\BillItem;
 use App\Models\Expense\BillTotal;
@@ -44,7 +44,7 @@ class Bills extends Controller
     {
         $bills = Bill::with(['vendor', 'status', 'items', 'payments', 'histories'])->collect(['billed_at'=> 'desc']);
 
-        $vendors = collect(Vendor::enabled()->pluck('name', 'id'))
+        $vendors = collect(Contractor::enabled()->pluck('name', 'id'))
             ->prepend(trans('general.all_type', ['type' => trans_choice('general.vendors', 2)]), '');
 
         $statuses = collect(BillStatus::all()->pluck('name', 'code'))
@@ -78,7 +78,7 @@ class Bills extends Controller
 
         $account_currency_code = Account::where('id', setting('general.default_account'))->pluck('currency_code')->first();
 
-        $vendors = Vendor::enabled()->pluck('name', 'id');
+        $vendors = Contractor::enabled()->pluck('name', 'id');
 
         $categories = Category::enabled()->type('income')->pluck('name', 'id');
 
@@ -94,7 +94,7 @@ class Bills extends Controller
      */
     public function create()
     {
-        $vendors = Vendor::enabled()->pluck('name', 'id');
+        $vendors = Contractor::enabled()->pluck('name', 'id');
 
         $currencies = Currency::enabled()->pluck('name', 'code');
 
@@ -115,7 +115,7 @@ class Bills extends Controller
     public function store(Request $request)
     {
         // Get vendor object
-        $vendor = Vendor::findOrFail($request['vendor_id']);
+        $vendor = Contractor::findOrFail($request['vendor_id']);
 
         $request['vendor_name'] = $vendor->name;
         $request['vendor_email'] = $vendor->email;
@@ -294,7 +294,7 @@ class Bills extends Controller
      */
     public function edit(Bill $bill)
     {
-        $vendors = Vendor::enabled()->pluck('name', 'id');
+        $vendors = Contractor::enabled()->pluck('name', 'id');
 
         $currencies = Currency::enabled()->pluck('name', 'code');
 
@@ -316,7 +316,7 @@ class Bills extends Controller
     public function update(Bill $bill, Request $request)
     {
         // Get vendor object
-        $vendor = Vendor::findOrFail($request['vendor_id']);
+        $vendor = Contractor::findOrFail($request['vendor_id']);
 
         $request['vendor_name'] = $vendor->name;
         $request['vendor_email'] = $vendor->email;

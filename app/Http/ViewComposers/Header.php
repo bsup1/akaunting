@@ -24,8 +24,8 @@ class Header
         $notifications = 0;
         $company = null;
 
-        // Get customer company
-        if ($user->customer()) {
+        // Get contractor company
+        if ($user->contractor()) {
             $company = (object)[
                 'company_name' => setting('general.company_name'),
                 'company_email' => setting('general.company_email'),

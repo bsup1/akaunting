@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Incomes;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Income\Revenue as Request;
 use App\Models\Banking\Account;
-use App\Models\Income\Customer;
+use App\Models\Contractor\Contractor;
 use App\Models\Income\Revenue;
 use App\Models\Setting\Category;
 use App\Models\Setting\Currency;
@@ -28,7 +28,7 @@ class Revenues extends Controller
     {
         $revenues = Revenue::with(['account', 'category', 'customer'])->isNotTransfer()->collect(['paid_at'=> 'desc']);
 
-        $customers = collect(Customer::enabled()->pluck('name', 'id'))
+        $customers = collect(Contractor::enabled()->pluck('name', 'id'))
             ->prepend(trans('general.all_type', ['type' => trans_choice('general.customers', 2)]), '');
 
         $categories = collect(Category::enabled()->type('income')->pluck('name', 'id'))
@@ -55,7 +55,7 @@ class Revenues extends Controller
 
         $account_currency_code = Account::where('id', setting('general.default_account'))->pluck('currency_code')->first();
 
-        $customers = Customer::enabled()->pluck('name', 'id');
+        $customers = Contractor::enabled()->pluck('name', 'id');
 
         $categories = Category::enabled()->type('income')->pluck('name', 'id');
 
@@ -153,7 +153,7 @@ class Revenues extends Controller
 
         $account_currency_code = Account::where('id', $revenue->account_id)->pluck('currency_code')->first();
 
-        $customers = Customer::enabled()->pluck('name', 'id');
+        $customers = Contractor::enabled()->pluck('name', 'id');
 
         $categories = Category::enabled()->type('income')->pluck('name', 'id');
 

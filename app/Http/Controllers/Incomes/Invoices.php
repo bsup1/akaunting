@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Income\Invoice as Request;
 use App\Http\Requests\Income\InvoicePayment as PaymentRequest;
 use App\Models\Banking\Account;
-use App\Models\Income\Customer;
+use App\Models\Contractor\Contractor;
 use App\Models\Income\Invoice;
 use App\Models\Income\InvoiceHistory;
 use App\Models\Income\InvoiceItem;
@@ -47,7 +47,7 @@ class Invoices extends Controller
     {
         $invoices = Invoice::with(['customer', 'status', 'items', 'payments', 'histories'])->collect(['invoice_number'=> 'desc']);
 
-        $customers = collect(Customer::enabled()->pluck('name', 'id'))
+        $customers = collect(Contractor::enabled()->pluck('name', 'id'))
             ->prepend(trans('general.all_type', ['type' => trans_choice('general.customers', 2)]), '');
 
         $status = collect(InvoiceStatus::all()->pluck('name', 'code'))
@@ -81,7 +81,7 @@ class Invoices extends Controller
 
         $account_currency_code = Account::where('id', setting('general.default_account'))->pluck('currency_code')->first();
 
-        $customers = Customer::enabled()->pluck('name', 'id');
+        $customers = Contractor::enabled()->pluck('name', 'id');
 
         $categories = Category::enabled()->type('income')->pluck('name', 'id');
 
@@ -97,7 +97,7 @@ class Invoices extends Controller
      */
     public function create()
     {
-        $customers = Customer::enabled()->pluck('name', 'id');
+        $customers = Contractor::enabled()->pluck('name', 'id');
 
         $currencies = Currency::enabled()->pluck('name', 'code');
 
@@ -120,7 +120,7 @@ class Invoices extends Controller
     public function store(Request $request)
     {
         // Get customer object
-        $customer = Customer::findOrFail($request['customer_id']);
+        $customer = Contractor::findOrFail($request['customer_id']);
 
         $request['customer_name'] = $customer->name;
         $request['customer_email'] = $customer->email;
@@ -315,7 +315,7 @@ class Invoices extends Controller
      */
     public function edit(Invoice $invoice)
     {
-        $customers = Customer::enabled()->pluck('name', 'id');
+        $customers = Contractor::enabled()->pluck('name', 'id');
 
         $currencies = Currency::enabled()->pluck('name', 'code');
 
@@ -337,7 +337,7 @@ class Invoices extends Controller
     public function update(Invoice $invoice, Request $request)
     {
         // Get customer object
-        $customer = Customer::findOrFail($request['customer_id']);
+        $customer = Contractor::findOrFail($request['customer_id']);
 
         $request['customer_name'] = $customer->name;
         $request['customer_email'] = $customer->email;

@@ -59,6 +59,11 @@ class User extends Authenticatable
         return $this->hasOne('App\Models\Income\Customer', 'user_id', 'id');
     }
 
+    public function contractor()
+    {
+        return $this->hasOne('App\Models\Contractor\Contractor', 'user_id', 'id');
+    }
+
     /**
      * Always capitalize the name when we retrieve it
      */

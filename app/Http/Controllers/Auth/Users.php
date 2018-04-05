@@ -96,6 +96,11 @@ class Users extends Controller
             $roles = Role::all()->reject(function ($r) {
                 return !$r->hasPermission('read-customer-panel');
             });
+        } else if ($user->contractor) {
+            // Show only roles with contractor permission
+            $roles = Role::all()->reject(function ($r) {
+                return !$r->hasPermission('read-contractor-panel');
+            });
         } else {
             // Don't show roles with customer permission
             $roles = Role::all()->reject(function ($r) {

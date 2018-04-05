@@ -7,8 +7,8 @@ use App\Events\InvoicePaid;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 
-use App\Http\Requests\Customer\InvoicePayment as PaymentRequest;
-use App\Http\Requests\Customer\InvoiceConfirm as ConfirmRequest;
+use App\Http\Requests\Contractor\InvoicePayment as PaymentRequest;
+use App\Http\Requests\Contractor\InvoiceConfirm as ConfirmRequest;
 
 use App\Models\Income\Invoice;
 

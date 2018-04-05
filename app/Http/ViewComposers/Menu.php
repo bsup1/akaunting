@@ -16,7 +16,7 @@ class Menu
      */
     public function compose(View $view)
     {
-        $customer = null;
+        $contractor = null;
         $company_id = session('company_id');
 
         // Get all companies
@@ -25,11 +25,11 @@ class Menu
             $com->setSettings();
         }
 
-        // Get customer
-        if (Auth::user()->customer) {
-            $customer = Auth::user();
+        // Get contractor
+        if (Auth::user()->contractor) {
+            $contractor = Auth::user();
         }
 
-        $view->with(['companies' => $companies, 'customer' => $customer]);
+        $view->with(['companies' => $companies, 'contractor' => $contractor]);
     }
 }
