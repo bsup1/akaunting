@@ -29,7 +29,7 @@ class Payments extends Controller
         $vendors = collect(Contractor::enabled()->pluck('name', 'id'))
             ->prepend(trans('general.all_type', ['type' => trans_choice('general.vendors', 2)]), '');
 
-        $categories = collect(Category::enabled()->type('expense')->pluck('name', 'id'))
+        $categories = collect(Category::enabled()->pluck('name', 'id'))
             ->prepend(trans('general.all_type', ['type' => trans_choice('general.categories', 2)]), '');
 
         $accounts = collect(Account::enabled()->pluck('name', 'id'))
@@ -55,7 +55,7 @@ class Payments extends Controller
 
         $vendors = Contractor::enabled()->pluck('name', 'id');
 
-        $categories = Category::enabled()->type('expense')->pluck('name', 'id');
+        $categories = Category::enabled()->pluck('name', 'id');
 
         $payment_methods = Modules::getPaymentMethods();
 
@@ -153,7 +153,7 @@ class Payments extends Controller
 
         $vendors = Contractor::enabled()->pluck('name', 'id');
 
-        $categories = Category::enabled()->type('expense')->pluck('name', 'id');
+        $categories = Category::enabled()->pluck('name', 'id');
 
         $payment_methods = Modules::getPaymentMethods();
 
