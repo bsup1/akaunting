@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Incomes;
+namespace App\Http\Controllers\Contractors;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Contractor\Contractor as Request;
