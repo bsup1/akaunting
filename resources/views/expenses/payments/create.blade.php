@@ -8,11 +8,13 @@
         {!! Form::open(['url' => 'expenses/payments', 'files' => true, 'role' => 'form']) !!}
 
         <div class="box-body">
-            {{ Form::textGroup('paid_at', trans('general.date'), 'calendar',['id' => 'paid_at', 'class' => 'form-control', 'required' => 'required', 'data-inputmask' => '\'alias\': \'yyyy-mm-dd\'', 'data-mask' => ''], Date::now()->toDateString()) }}
+            {{ Form::textGroup('paid_at', trans('general.date'), 'calendar', ['id' => 'paid_at', 'class' => 'form-control', 'required' => 'required', 'data-inputmask' => '\'alias\': \'yyyy-mm-dd\'', 'data-mask' => ''], Date::now()->toDateString()) }}
 
             {{ Form::textGroup('amount', trans('general.amount'), 'money', ['required' => 'required', 'autofocus' => 'autofocus']) }}
 
             {{ Form::selectGroup('account_id', trans_choice('general.accounts', 1), 'university', $accounts, setting('general.default_account')) }}
+
+            {{ Form::textGroup('cad_amount', trans('general.cad_amount'), 'money', []) }}
 
             <div class="form-group col-md-6 {{ $errors->has('currency_code') ? 'has-error' : ''}}">
                 {!! Form::label('currency_code', trans_choice('general.currencies', 1), ['class' => 'control-label']) !!}
