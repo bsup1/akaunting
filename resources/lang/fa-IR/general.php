@@ -99,6 +99,7 @@ return [
     'overdue'               => 'سر رسید شده',
     'partially'             => 'جزئی',
     'partially_paid'        => 'پرداخت جزئی',
+    'cad_amount'            => 'مقدار دلار کانادا',
 
     'title' => [
         'new'               => ':type جدید',
