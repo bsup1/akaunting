@@ -23,14 +23,14 @@ class Payment extends Model
      *
      * @var array
      */
-    protected $fillable = ['company_id', 'account_id', 'paid_at', 'amount', 'currency_code', 'currency_rate', 'vendor_id', 'description', 'category_id', 'payment_method', 'reference'];
+    protected $fillable = ['company_id', 'account_id', 'paid_at', 'amount', 'cad_amount', 'currency_code', 'currency_rate', 'vendor_id', 'description', 'category_id', 'payment_method', 'reference'];
 
     /**
      * Sortable columns.
      *
      * @var array
      */
-    public $sortable = ['paid_at', 'amount', 'category.name', 'account.name'];
+    public $sortable = ['paid_at', 'amount', 'cad_amount', 'category.name', 'account.name'];
 
     /**
      * Searchable rules.
@@ -100,6 +100,17 @@ class Payment extends Model
     public function setAmountAttribute($value)
     {
         $this->attributes['amount'] = (double) $value;
+    }
+
+    /**
+     * Convert CAD amount to double.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setCadAmountAttribute($value)
+    {
+        $this->attributes['cad_amount'] = (double) $value;
     }
 
     /**
