@@ -101,6 +101,7 @@ return [
     'partially'             => 'Partially',
     'partially_paid'        => 'Partially Paid',
     'cad_amount'            => 'CAD Amount',
+    'ratio'                 => 'Ratio',
 
     'title' => [
         'new'               => 'New :type',

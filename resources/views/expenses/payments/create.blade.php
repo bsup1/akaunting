@@ -26,6 +26,8 @@
                 {!! $errors->first('currency_code', '<p class="help-block">:message</p>') !!}
             </div>
 
+            {{ Form::textGroup('ratio', trans('general.ratio'), 'money', []) }}
+
             {{ Form::textareaGroup('description', trans('general.description')) }}
 
             {{ Form::selectGroup('category_id', trans_choice('general.categories', 1), 'folder-open-o', $categories) }}

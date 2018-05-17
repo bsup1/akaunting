@@ -23,14 +23,14 @@ class Payment extends Model
      *
      * @var array
      */
-    protected $fillable = ['company_id', 'account_id', 'paid_at', 'amount', 'cad_amount', 'currency_code', 'currency_rate', 'vendor_id', 'description', 'category_id', 'payment_method', 'reference'];
+    protected $fillable = ['company_id', 'account_id', 'paid_at', 'amount', 'cad_amount', 'ratio', 'currency_code', 'currency_rate', 'vendor_id', 'description', 'category_id', 'payment_method', 'reference'];
 
     /**
      * Sortable columns.
      *
      * @var array
      */
-    public $sortable = ['paid_at', 'amount', 'cad_amount', 'category.name', 'account.name'];
+    public $sortable = ['paid_at', 'amount', 'cad_amount', 'ratio', 'category.name', 'account.name'];
 
     /**
      * Searchable rules.
@@ -122,6 +122,17 @@ class Payment extends Model
     public function setCurrencyRateAttribute($value)
     {
         $this->attributes['currency_rate'] = (double) $value;
+    }
+
+    /**
+     * Convert ratio to double.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setRatioAttribute($value)
+    {
+        $this->attributes['ratio'] = (double) $value;
     }
 
     public static function scopeLatest($query)

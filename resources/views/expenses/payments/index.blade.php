@@ -37,6 +37,7 @@
                         <th class="col-md-2">@sortablelink('paid_at', trans('general.date'))</th>
                         <th class="col-md-2">@sortablelink('amount', trans('general.amount'))</th>
                         <th class="col-md-2">@sortablelink('cad_amount', trans('general.cad_amount'))</th>
+                        <th class="col-md-2">@sortablelink('ratio', trans('general.ratio'))</th>
                         <th class="col-md-3 hidden-xs">@sortablelink('vendor.name', trans_choice('general.vendors', 1))</th>
                         <th class="col-md-2 hidden-xs">@sortablelink('category.name', trans_choice('general.categories', 1))</th>
                         <th class="col-md-2 hidden-xs">@sortablelink('account.name', trans_choice('general.accounts', 1))</th>
@@ -49,6 +50,7 @@
                         <td><a href="{{ url('expenses/payments/' . $item->id . '/edit') }}">{{ Date::parse($item->paid_at)->format($date_format) }}</a></td>
                         <td>@money($item->amount, $item->currency_code, true)</td>
                         <td>@money($item->cad_amount, $item->currency_code, true)</td>
+                        <td class="hidden-xs">{{ $item->ratio }}</td>
                         <td class="hidden-xs">{{ !empty($item->vendor->name) ? $item->vendor->name : trans('general.na') }}</td>
                         <td class="hidden-xs">{{ $item->category->name }}</td>
                         <td class="hidden-xs">{{ $item->account->name }}</td>

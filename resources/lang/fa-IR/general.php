@@ -100,6 +100,7 @@ return [
     'partially'             => 'جزئی',
     'partially_paid'        => 'پرداخت جزئی',
     'cad_amount'            => 'مقدار دلار کانادا',
+    'ratio'                 => 'نرخ',
 
     'title' => [
         'new'               => ':type جدید',
