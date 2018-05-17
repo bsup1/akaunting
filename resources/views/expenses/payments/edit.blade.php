@@ -19,6 +19,8 @@
 
             {{ Form::selectGroup('account_id', trans_choice('general.accounts', 1), 'university', $accounts) }}
 
+            {{ Form::textGroup('cad_amount', trans('general.cad_amount'), 'money', []) }}
+
             <div class="form-group col-md-6 {{ $errors->has('currency_code') ? 'has-error' : ''}}">
                 {!! Form::label('currency_code', trans_choice('general.currencies', 1), ['class' => 'control-label']) !!}
                 <div class="input-group">
