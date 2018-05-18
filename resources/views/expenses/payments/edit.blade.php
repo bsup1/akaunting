@@ -15,11 +15,11 @@
         <div class="box-body">
             {{ Form::textGroup('paid_at', trans('general.date'), 'calendar', ['id' => 'paid_at', 'class' => 'form-control', 'required' => 'required', 'data-inputmask' => '\'alias\': \'yyyy-mm-dd\'', 'data-mask' => ''], Date::parse($payment->paid_at)->toDateString()) }}
 
-            {{ Form::textGroup('amount', trans('general.amount'), 'money', ['required' => 'required', 'autofocus' => 'autofocus']) }}
+            {{ Form::textGroup('amount', trans('general.amount'), 'money', ['required' => 'required', 'autofocus' => 'autofocus', 'id' => 'amount', 'class' => 'form-control check-ratio']) }}
 
             {{ Form::selectGroup('account_id', trans_choice('general.accounts', 1), 'university', $accounts) }}
 
-            {{ Form::textGroup('cad_amount', trans('general.cad_amount'), 'money', []) }}
+            {{ Form::textGroup('cad_amount', trans('general.cad_amount'), 'money', ['id' => 'cad_amount', 'class' => 'form-control check-ratio']) }}
 
             <div class="form-group col-md-6 {{ $errors->has('currency_code') ? 'has-error' : ''}}">
                 {!! Form::label('currency_code', trans_choice('general.currencies', 1), ['class' => 'control-label']) !!}
@@ -31,7 +31,18 @@
                 {!! $errors->first('currency_code', '<p class="help-block">:message</p>') !!}
             </div>
 
-            {{ Form::textGroup('ratio', trans('general.ratio'), 'money', []) }}
+            <div class="form-group col-md-6 {{ $errors->has('ratio') ? 'has-error' : ''}}">
+                {!! Form::label('ratio', trans_choice('general.ratio', 1), ['class' => 'control-label']) !!}
+                <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-money"></i></div>
+                    {!! Form::text('ratio', null, ['id' => 'ratio', 'class' => 'form-control check-ratio', 'placeholder' => trans('general.ratio')]) !!}
+                </div>
+                <p class="help-block">
+                    <span class="check-ratio-warning text-danger">
+                        {{ trans('messages.warning.check_ratio') }}
+                    </span>
+                </p>
+            </div>
 
             {{ Form::textareaGroup('description', trans('general.description')) }}
 
@@ -136,6 +147,22 @@
                 }
             });
         });
+
+        $(document).on('input', '.check-ratio', function (e) {
+            var cad_amount = +$('#cad_amount').val();
+            var real_amount = +$('#amount').val() / cad_amount;
+            var ratio = +$('#ratio').val();
+
+            if(cad_amount && (real_amount > ratio))
+            {
+                $(".check-ratio-warning").text('{{ trans('messages.warning.check_ratio') }}'.replace(":x", real_amount.toFixed(2))).show();
+            }
+            else {
+                $('.check-ratio-warning').hide();
+            }
+        });
+
+        $('.check-ratio').trigger('input');
     });
 </script>
 @endpush
