@@ -18,6 +18,7 @@ return [
     'warning' => [
         'deleted'           => 'Warning: You are not allowed to delete <b>:name</b> because it has :text related.',
         'disabled'          => 'Warning: You are not allowed to disable <b>:name</b> because it has :text related.',
+        'check_ratio'       => 'Warning: The actual ratio :x is greater than the ratio (expected)'
     ],
 
 ];
