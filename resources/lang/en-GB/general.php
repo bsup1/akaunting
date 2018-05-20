@@ -38,6 +38,8 @@ return [
     'updates'               => 'Update|Updates',
     'numbers'               => 'Number|Numbers',
     'statuses'              => 'Status|Statuses',
+    'payments_in_dollar'    => 'Payment in Dollar|Payments in Dollar',
+    'remaining_payments'    => 'Remaining Payment|Remaining Payments',
 
     'dashboard'             => 'Dashboard',
     'banking'               => 'Banking',
