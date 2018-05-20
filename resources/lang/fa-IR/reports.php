@@ -12,6 +12,7 @@ return [
         'income'            => 'خلاصه درآمد',
         'expense'           => 'خلاصه هزینه',
         'income_expense'    => 'هزینه درآمد',
+        'income_expense_two'=> 'درآمد و پرداخت‌های شخص',
     ],
 
 ];

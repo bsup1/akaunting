@@ -12,6 +12,7 @@ return [
         'income'            => 'Income Summary',
         'expense'           => 'Expense Summary',
         'income_expense'    => 'Income vs Expense',
+        'income_expense_two'=> 'Income vs Expense 2',
     ],
 
 ];
