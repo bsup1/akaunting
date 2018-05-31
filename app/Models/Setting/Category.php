@@ -57,6 +57,6 @@ class Category extends Model
      */
     public function scopeTransfer($query)
     {
-        return $query->where('type', 'other')->pluck('id')->first();
+        return $query->where('type', 'other')->pluck('id');
     }
 }
