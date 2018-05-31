@@ -105,7 +105,7 @@ class Transfers extends Controller
         $request['currency_code'] = $payment_currency_code;
         $request['currency_rate'] = $currencies[$payment_currency_code];
         $request['vendor_id'] = '0';
-        $request['category_id'] = Category::transfer(); // Transfer Category ID
+        $request['category_id'] = Category::transfer()->first(); // Transfer Category ID
         $request['attachment'] = '';
 
         $payment = Payment::create($request->all());
@@ -194,7 +194,7 @@ class Transfers extends Controller
         $request['currency_code'] = $payment_currency_code;
         $request['currency_rate'] = $currencies[$payment_currency_code];
         $request['vendor_id'] = '0';
-        $request['category_id'] = Category::transfer(); // Transfer Category ID
+        $request['category_id'] = Category::transfer()->first(); // Transfer Category ID
         $request['attachment'] = '';
 
         $payment->update($request->all());
