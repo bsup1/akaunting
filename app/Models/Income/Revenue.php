@@ -83,7 +83,7 @@ class Revenue extends Model
      */
     public function scopeIsTransfer($query)
     {
-        return $query->where('category_id', '=', Category::transfer());
+        return $query->where('category_id', '=', Category::transfer()->first());
     }
 
     /**
@@ -94,7 +94,7 @@ class Revenue extends Model
      */
     public function scopeIsNotTransfer($query)
     {
-        return $query->where('category_id', '<>', Category::transfer());
+        return $query->where('category_id', '<>', Category::transfer()->first());
     }
 
     /**
