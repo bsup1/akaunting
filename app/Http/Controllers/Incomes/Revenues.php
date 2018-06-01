@@ -37,7 +37,7 @@ class Revenues extends Controller
         $accounts = collect(Account::enabled()->pluck('name', 'id'))
             ->prepend(trans('general.all_type', ['type' => trans_choice('general.accounts', 2)]), '');
 
-        $transfer_cat_id = Category::transfer();
+        $transfer_cat_id = Category::transfer()->first();
 
         return view('incomes.revenues.index', compact('revenues', 'customers', 'categories', 'accounts', 'transfer_cat_id'));
     }
@@ -204,7 +204,7 @@ class Revenues extends Controller
     public function destroy(Revenue $revenue)
     {
         // Can't delete transfer revenue
-        if ($revenue->category->id == Category::transfer()) {
+        if ($revenue->category->id == Category::transfer()->first()) {
             return redirect('incomes/revenues');
         }
 

@@ -18,7 +18,7 @@ class Categories extends Controller
     {
         $categories = Category::collect();
 
-        $transfer_id = Category::transfer();
+        $transfer_id = Category::transfer()->first();
 
         $types = collect(['expense' => 'Expense', 'income' => 'Income', 'item' => 'Item', 'other' => 'Other'])
             ->prepend(trans('general.all_type', ['type' => trans_choice('general.types', 2)]), '');
@@ -115,7 +115,7 @@ class Categories extends Controller
         ]);
 
         // Can't delete transfer category
-        if ($category->id == Category::transfer()) {
+        if ($category->id == Category::transfer()->first()) {
             return redirect('settings/categories');
         }
 
